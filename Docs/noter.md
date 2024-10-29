@@ -50,3 +50,9 @@ SQL:
 (mellemtabel) Wishlist_item:
 user id
 ønske_id
+
+
+LINKS:
+
+Klassediagram: 
+https://app.diagrams.net/?src=about#G1SaGnmTySzVKpXXoEmWxylyccAvrOrJ46#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D
