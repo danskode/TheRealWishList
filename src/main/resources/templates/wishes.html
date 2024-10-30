@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wishes</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Wish Name</th>
+        <th>URL</th>
+        <th>Price</th>
+        <th>Reserved</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="wish : ${wishes}">
+        <td th:text="${wish.wishName}"></td>
+        <td th:text="${wish.url}"></td>
+        <td th:text="${wish.price}"></td>
+        <td th:text="${wish.reserved}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

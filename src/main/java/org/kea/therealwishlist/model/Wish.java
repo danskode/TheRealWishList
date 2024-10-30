@@ -9,8 +9,11 @@ public class Wish {
     private boolean reserved;
 
 
-    public Wish() {
-
+    public Wish(String wishName, String url, float price, boolean reserved) {
+        this.wishName = wishName;
+        this.url = url;
+        this.price = price;
+        this.reserved = reserved;
     }
 
     public Wish(int wishID, String wishName, String url, float price, boolean reserved) {
