@@ -19,7 +19,10 @@
         <td th:text="${wish.wishName}"></td>
         <td th:text="${wish.url}"></td>
         <td th:text="${wish.price}"></td>
-        <td th:text="${wish.reserved}"></td>
+        <td>
+            <span th:if="${wish.reserved}" th:text="'Reserved'"></span>
+            <span th:if="${!wish.reserved}" th:text="'Not reserved'"></span>
+        </td>
     </tr>
     </tbody>
 </table>
