@@ -21,9 +21,37 @@ public class Wish {
         this.reserved = reserved;
     }
 
-    public boolean isReserved() {
+    // Getters
+    public int getWishID() {
+        return wishID; }
 
-    }
+    public String getWishName() {
+        return wishName; }
+
+    public String getUrl() {
+        return url; }
+
+    public float getPrice() {
+        return price; }
+
+    public boolean isReserved() {
+        return reserved; }
+
+    // Setters
+    public void setWishID(int wishID) {
+        this.wishID = wishID; }
+
+    public void setWishName(String wishName) {
+        this.wishName = wishName; }
+
+    public void setUrl(String url) {
+        this.url = url; }
+
+    public void setPrice(float price) {
+        this.price = price; }
+
+    public void setReserved(boolean reserved) {
+        this.reserved = reserved; }
 
 
 }
