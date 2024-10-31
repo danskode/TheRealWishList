@@ -1,0 +1,110 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0.1 Safari/605.1.15" version="24.8.3">
+  <diagram name="Side-1" id="ePfV17zFk9Fktkw8jf1w">
+    <mxGraphModel dx="1694" dy="732" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="80" as="sourcePoint" />
+            <mxPoint x="191" y="230" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="191" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-25" value="Logs in successfully" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="uvfMVI4-fCFwztoC2P9H-24">
+          <mxGeometry x="-0.0831" y="3" relative="1" as="geometry">
+            <mxPoint x="-25" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2" value="Home Page / login &quot;/&quot;" style="whiteSpace=wrap;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="169" y="30" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="10" y="470" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-122" y="267" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-33" value="Clicks on a wishlist owned by another user but sharede with this user" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="uvfMVI4-fCFwztoC2P9H-23">
+          <mxGeometry x="0.4423" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3" value="User page &quot;/{username}&quot;&#xa;&#xa;shows a list of user&#39;s own wish lists (click to se wishes on a given wish list) + add new button.&#xa;&#xa;Shows a list of wish lists that are shared with the user" style="whiteSpace=wrap;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="130" y="230" width="220" height="149" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="wish list page (other user)&#xa;/{userName}/{wishListName}&#xa;&#xa;Gets a list of wishes belonging to this wishlist and is able to see if wishes are reserved by others and to reserve a non-reserved wish (update wish)" style="whiteSpace=wrap;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="-200" y="320" width="155" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="uvfMVI4-fCFwztoC2P9H-11" target="uvfMVI4-fCFwztoC2P9H-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-20" value="Clicks add new wish" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="uvfMVI4-fCFwztoC2P9H-19">
+          <mxGeometry x="0.1205" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-11" value="wish list page (own) &quot;/{username}/{wishListID}&quot;&#xa;&#xa;List of wishes for that wishlist with buttons to update, delete existing wishes and add new wish to the wishlist.&#xa;&#xa;Also function to invite another user to see and do reservations on the list." style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="560" y="320" width="177" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-13" value="add new wish page &quot;/{wishListName}/add&#xa;&#xa;add price, url and name" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="700" y="584" width="157" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-15" value="Update wish page &quot;/{wishListName}/{wishName}&quot;&#xa;&#xa;change price, url and name" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="584" width="157" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="uvfMVI4-fCFwztoC2P9H-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-22" value="Clicks on one of user&#39;s own wish lists" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="uvfMVI4-fCFwztoC2P9H-21">
+          <mxGeometry x="-0.1382" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.204;entryY=0.041;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="uvfMVI4-fCFwztoC2P9H-11" target="uvfMVI4-fCFwztoC2P9H-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-28" value="Clicks edit existing wish" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="uvfMVI4-fCFwztoC2P9H-27">
+          <mxGeometry x="0.3575" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.815;exitY=-0.02;exitDx=0;exitDy=0;entryX=0.102;entryY=0.975;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="uvfMVI4-fCFwztoC2P9H-15" target="uvfMVI4-fCFwztoC2P9H-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.134;exitY=0;exitDx=0;exitDy=0;entryX=0.91;entryY=0.992;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="uvfMVI4-fCFwztoC2P9H-13" target="uvfMVI4-fCFwztoC2P9H-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.223;entryY=1.007;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="395" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-32" value="Clicks to go back" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="uvfMVI4-fCFwztoC2P9H-31">
+          <mxGeometry x="0.222" relative="1" as="geometry">
+            <mxPoint x="1" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;startArrow=classic;startFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="80" as="sourcePoint" />
+            <mxPoint x="291" y="230" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="290" y="156" />
+              <mxPoint x="291" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uvfMVI4-fCFwztoC2P9H-35" value="Logs out / session timeout" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="uvfMVI4-fCFwztoC2P9H-34">
+          <mxGeometry x="-0.0831" y="3" relative="1" as="geometry">
+            <mxPoint x="27" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
