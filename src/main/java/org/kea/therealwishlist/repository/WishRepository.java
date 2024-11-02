@@ -1,25 +1,30 @@
 package org.kea.therealwishlist.repository;
 
 import org.kea.therealwishlist.model.Wish;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Repository
 public class WishRepository {
 
-    final private String url = System.getenv("DB_URL");
-    final private String user = System.getenv("DB_USER");
-    final private String password = System.getenv("DB_PASSWORD");
+    //DataSource gør det muligt for os at teste med en test-profil (application-test.properties), så hentes miljøvariablene fra denne eller prod automatisk
+    private final DataSource dataSource;
+
+    @Autowired
+    public WishRepository(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     public List<Wish> findAll() {
         List<Wish> wishes = new ArrayList<>();
         String sql = "SELECT * FROM wish";
 
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        try (Connection connection = dataSource.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -36,5 +41,4 @@ public class WishRepository {
         }
         return wishes;
     }
-
 }

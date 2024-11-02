@@ -15,7 +15,7 @@ public class ProfileRepository {
 
     // Metode til at oprette en ny profil
     public void createProfile(Profile profile) {
-        String sql = "INSERT INTO user (user_name, user_password) VALUES (?, ?)";
+        String sql = "INSERT INTO `user` (user_name, user_password) VALUES (?, ?)";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(sql)) {
