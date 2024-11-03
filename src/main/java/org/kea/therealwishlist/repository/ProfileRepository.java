@@ -1,34 +1,38 @@
 package org.kea.therealwishlist.repository;
 
 import org.kea.therealwishlist.model.Profile;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.sql.*;
 
 @Repository
 public class ProfileRepository {
 
-    // Her hentes variable fra den aktive profil angivet i application.properties (prod eller test) ...
-    @Value("${spring.datasource.url}")
-    private String url;
+// Ved at bruge JdbcTemplate slipper du for at angive url, user, og password direkte i koden, da Spring Boot henter disse fra de korrekte application-filer baseret på den aktive profil.
+    private final JdbcTemplate jdbcTemplate;
 
-    @Value("${spring.datasource.username}")
-    private String user;
+    public ProfileRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
-    @Value("${spring.datasource.password}")
-    private String password;
+    public void createProfile(Profile profile) {
+        String sql = "INSERT INTO `user` (user_name, user_password) VALUES (?, ?)";
+        jdbcTemplate.update(sql, profile.getProfileName(), profile.getProfilePassword());
+    }
+}
 
-    //Denne kode gør, at man ikke kan bruge de forskellige profiler prod og test til forbindelsen ...
+
+
+ /* Patrick har sagt at vi godt må gøre brug af jdbcTemplate, derfor har vi udkommenteret vores oprindelige kode'
+
     //final private String url = System.getenv("DB_URL");
     //final private String user = System.getenv("DB_USER");
     //final private String password = System.getenv("DB_PASSWORD");
-
 
     // Metode til at oprette en ny profil
     public void createProfile(Profile profile) {
         String sql = "INSERT INTO `user` (user_name, user_password) VALUES (?, ?)";
 
+        // Vi må godt bare gøre brug af "jdbc.Template"
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
@@ -42,3 +46,4 @@ public class ProfileRepository {
         }
     }
 }
+*/

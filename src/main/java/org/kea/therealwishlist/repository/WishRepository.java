@@ -1,17 +1,43 @@
 package org.kea.therealwishlist.repository;
 
 import org.kea.therealwishlist.model.Wish;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
+
 
 @Repository
 public class WishRepository {
 
+    private final JdbcTemplate jdbcTemplate;
+
+    // Injecter JdbcTemplate i konstruktøren
+    public WishRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public List<Wish> findAll() {
+        String sql = "SELECT * FROM wish";
+
+        // Definerer en RowMapper for at mappe resultaterne til Wish objekter
+        RowMapper<Wish> rowMapper = (resultSet, rowNum) -> new Wish(
+                resultSet.getString("wish_name"),
+                resultSet.getString("wish_url"),
+                resultSet.getFloat("wish_price"),
+                resultSet.getBoolean("wish_reserved")
+        );
+
+        // Brug JdbcTemplate til at udføre forespørgslen og returnere listen over wishes
+        return jdbcTemplate.query(sql, rowMapper);
+    }
+}
+
+
+
+/* Patrick har sagt at vi godt må gøre brug af jdbcTemplate, derfor har vi udkommenteret vores oprindelige kode som gjorde burg af DataSource'
+//
     //DataSource gør det muligt for os at teste med en test-profil (application-test.properties), så hentes miljøvariablene fra denne eller prod automatisk
     private final DataSource dataSource;
 
@@ -41,4 +67,4 @@ public class WishRepository {
         }
         return wishes;
     }
-}
+}*/

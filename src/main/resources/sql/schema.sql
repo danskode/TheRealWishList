@@ -1,9 +1,12 @@
+
+
+
 -- Opret tabel "user"
 CREATE TABLE "user" (
-                      id INT NOT NULL AUTO_INCREMENT,
-                      user_name VARCHAR(255),
-                      user_password VARCHAR(255),
-                      PRIMARY KEY(id)
+                        id INT NOT NULL AUTO_INCREMENT,
+                        user_name VARCHAR(255),
+                        user_password VARCHAR(255),
+                        PRIMARY KEY(id)
 );
 
 -- Opret tabel "wish_list"
@@ -36,3 +39,4 @@ CREATE TABLE wish_item_reservation (
                                        FOREIGN KEY(wish_id) REFERENCES wish(id),
                                        FOREIGN KEY(user_id) REFERENCES "user"(id)
 );
+
