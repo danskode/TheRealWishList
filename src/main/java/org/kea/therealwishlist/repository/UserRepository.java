@@ -1,22 +1,22 @@
 package org.kea.therealwishlist.repository;
 
-import org.kea.therealwishlist.model.Profile;
+import org.kea.therealwishlist.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ProfileRepository {
+public class UserRepository {
 
 // Ved at bruge JdbcTemplate slipper du for at angive url, user, og password direkte i koden, da Spring Boot henter disse fra de korrekte application-filer baseret på den aktive profil.
     private final JdbcTemplate jdbcTemplate;
 
-    public ProfileRepository(JdbcTemplate jdbcTemplate) {
+    public UserRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void createProfile(Profile profile) {
+    public void createUser(User user) {
         String sql = "INSERT INTO `user` (user_name, user_password) VALUES (?, ?)";
-        jdbcTemplate.update(sql, profile.getProfileName(), profile.getProfilePassword());
+        jdbcTemplate.update(sql, user.getUserName(), user.getUserPassword());
     }
 }
 
