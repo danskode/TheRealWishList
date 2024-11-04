@@ -1,7 +1,7 @@
 # Risikoanalyse | Risk Asssessment
 
 ## Vag opgavebeskrivelse
-Den største risiko for projektet er en meget vag opgavebeskrivelse. De meget få og meget overordnede krav til projektet, der eksplicit er beskrevet, gør det svært at sikre, at alle kundens (undervisernes) implicitte krav kan opfyldes. I en reel opgave for en virkelig kunde ville denne risiko kunne minimeres ved at tage formøder med kunden inden udviklingsprocessen påbegyndes. I forbindelse med denne opgave kommer møder med project owner senere i forløbet, og derfor vurderes riskoen og dermed negative konsekvenser af en vag opgavebeskrivelse som HØJ.
+Den største risiko for projektet er den (bevidst) vage opgavebeskrivelse. De meget få og meget overordnede krav til projektet, der eksplicit er beskrevet, gør det svært at sikre, at alle kundens (undervisernes) implicitte krav kan opfyldes for uerfarne udviklere som os. I en reel opgave for en virkelig kunde ville denne risiko kunne minimeres ved at tage formøder med kunden inden udviklingsprocessen påbegyndes. I forbindelse med denne opgave kommer møder med project owner senere i forløbet, og derfor vurderes riskoen og dermed negative konsekvenser af en vag opgavebeskrivelse som HØJ.
 
 ### Risici:
 -	Scope creep: Vi overkompencerer for at sikre os, at vi opfylder de implicitte ønsker kunde måtte have, hvilket kan risikere i et alt for presset udviklingsforløb, hvor vi kan tage for mange opgaver på os som udviklingshold. Det kan også resultere i, at project owner sent i forløbet pointere scope creep, og vi derfor må ændre i kodebasen.
