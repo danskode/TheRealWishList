@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -36,8 +37,33 @@ public class UserController {
 
         model.addAttribute("message", "User succesfully created! Happy wishing!");
 
-        return "";// omdirigeres til en liste over sine ønskelister - opret ønskeliste??
+        return "test";// omdirigeres til en liste over sine ønskelister - opret ønskeliste??
     }
 
+    // Viser login-siden / vores forside
+    @GetMapping("/login")
+    public String showLoginForm(Model model) {
+        // Et tomt User-objekt tilføjet til modellen, som kan bruges i formularen
+        model.addAttribute("user", new User());
+        return "login";
+    }
 
+    // Når brugeren indsender loginformularen, tjekker denne mmetode brugernavn og adgangskode
+    @PostMapping("/login")
+    public String loginUser(@RequestParam("username") String username, // brugernavn indtastet af brugeren
+                            @RequestParam("password") String password, // kodeord indtastet af brugeren
+                            Model model) { // Model-objektet bruges til at sende data til HTML-siden
+
+        // Kalder loginUser fra userService og forsøger at logge ind
+        User user = userService.loginUser(username, password);
+
+        // Tjekker om brugeren blev fundet
+        if (user != null) {
+            model.addAttribute("user", user);
+            return "test"; // her kan brugeren se sine ønskelister (NICOLAI)
+        } else {
+            model.addAttribute("error", "Invalid username or password!");
+            return "login"; // returnerer login-siden med fejlbesked
+        }
+    }
 }
