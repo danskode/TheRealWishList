@@ -1,7 +1,12 @@
 # Interessentanalyse
 
 ## KUNDEN: 
-Projektets interessenter er kunden, der består af de fire undervisere, der er tilknyttet holdet. De fordeler sig på følgende kompetence- og interesseområder:
+Den Blå Avis ønsker at få en ønskeliste-funktion.
+
+## VORES ORGANISATION:
+En mindre start-up. Ejerne, der er sælgere/projektledere.
+... dataetik (ikke offentlige, kun delte for at sikre mod profilering i forbindelse markedsføring og andet), jura, bæredygtighed (genbrug), ressourcer (tidsforbrug)
+Brugerdata: brug og beskyttelse ...
 
 ### IT- og forretningsforståelse:
 -	Herunder udvikling af bæredygtige løsninger. Her er det relevant at overveje, hvordan løsningen på bedst mulig måde understøtter fagets teoretiske dele vedr. projektledelse, samarbejde, og etiske spørgsmål, det kunne være relevant at indarbejde teknologiske løsninger, der sikrer minimal påvirkning på klima og miljø samtidig med at tage hensyn til FN verdensmål på i drift og i udviklingsprocessen, fx undgå børnearbejde. Det kunne også være relevant at arbejde med GDPR, hvis projektet havde stillet krav til datasikkerhed.
