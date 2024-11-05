@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h2>Login</h2>
+
+<!-- Viser en fejlbesked, hvis login mislykkes -->
+<div th:if="${error}" style="color:red;">
+    <p th:text="${error}"></p>
+</div>
+
+<!-- Loginformular -->
+<form action="/login" method="post">
+    <label for="username">Brugernavn:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Adgangskode:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Log ind</button>
+</form>
+</body>
+</html>
