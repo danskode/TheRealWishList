@@ -20,7 +20,7 @@ public class WishController {
         this.wishRepository = wishRepository;
     }
 
-    @GetMapping("")
+    @GetMapping("/wishes")
     public String getWishes(Model model) {
         List<Wish> wishes = wishService.getWishes();
         model.addAttribute("wishes", wishes);

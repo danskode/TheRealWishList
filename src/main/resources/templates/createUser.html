@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create a user</title>
+    <title>Opret en bruger</title>
+    <link rel="stylesheet" th:href="styles.css">
+    <link rel="icon" href="/favicon.jpeg" type="image/jpeg">
 </head>
 <body>
+<div class="main">
+    <h1>Bliv en del af ØnskGenbrug!</h1>
+    <h2>Det kræver kun et brugernavn og en adgangskode</h2>
 
 <form action="#" th:action="@{/save}" th:object="${user}" method="post">
     <label for="userName">Name:</label>
@@ -13,8 +18,13 @@
     <label for="userPassword">Password:</label>
     <input type="password" id="userPassword" th:field="*{userPassword}" />
 
-    <button type="submit">Create User</button>
+    <div class="wrap">
+    <button type="submit">
+        Create User
+    </button>
+    </div>
 </form>
+</div>
 
 </body>
 </html>

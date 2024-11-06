@@ -2,15 +2,16 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Ønsk Genbrug</title>
+    <link rel="stylesheet" th:href="styles.css">
+    <link rel="icon" href="/favicon.jpeg" type="image/jpeg">
+
 </head>
 <body>
-<h2>Login</h2>
-
-<!-- Viser en fejlbesked, hvis login mislykkes -->
-<div th:if="${error}" style="color:red;">
-    <p th:text="${error}"></p>
-</div>
+<div class="main">
+    <h1>Velkommen til ØnskGenbrug!</h1>
+    <h2>Indtast dine login oplysninger</h2>
+    <h3> ... og kom i gang med at ønske!</h3>
 
 <!-- Loginformular -->
 <form action="/login" method="post">
@@ -20,7 +21,23 @@
     <label for="password">Adgangskode:</label>
     <input type="password" id="password" name="password" required>
 
-    <button type="submit">Log ind</button>
+    <div class="wrap">
+        <button type="submit">
+            Log ind
+        </button>
+    </div>
 </form>
+    <p> Har du ikke en bruger?
+        <a th:href="@{/create}" style="text-decoration: none;">
+            Opret en bruger
+        </a>
+    </p>
+</div>
+
+<!-- Viser en fejlbesked, hvis login mislykkes -->
+<div th:if="${error}" style="color:red;">
+    <p th:text="${error}"></p>
+</div>
+
 </body>
 </html>

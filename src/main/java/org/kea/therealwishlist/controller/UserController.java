@@ -41,14 +41,14 @@ public class UserController {
     }
 
     // Viser login-siden / vores forside
-    @GetMapping("/login")
+    @GetMapping("")
     public String showLoginForm(Model model) {
         // Et tomt User-objekt tilføjet til modellen, som kan bruges i formularen
         model.addAttribute("user", new User());
         return "login";
     }
 
-    // Når brugeren indsender loginformularen, tjekker denne mmetode brugernavn og adgangskode
+    // Når brugeren indsender loginformularen, tjekker denne metode brugernavn og adgangskode
     @PostMapping("/login")
     public String loginUser(@RequestParam("username") String username, // brugernavn indtastet af brugeren
                             @RequestParam("password") String password, // kodeord indtastet af brugeren
@@ -62,7 +62,7 @@ public class UserController {
             model.addAttribute("user", user);
             return "test"; // her kan brugeren se sine ønskelister (NICOLAI)
         } else {
-            model.addAttribute("error", "Invalid username or password!");
+            model.addAttribute("error", "Forkert brugernavn eller adgangskode!");
             return "login"; // returnerer login-siden med fejlbesked
         }
     }
