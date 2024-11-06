@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="main">
-    <h1>Velkommen, evt. brugernavnet her??</h1>
+    <h1>Velkommen, <span th:text="${username}">Brugernavn</span></h1>
     <h2>Dine ønskelister</h2>
 
     <p>Du har ingen ønskelister endnu. Klik på "Opret ønskeliste" for at komme i gang!</p>
@@ -18,13 +18,11 @@
     </div>
 
     <div class="wrap">
-        <button onclick= type="button">Opret ønskeliste</button>
+        <a th:href="@{/createwishlist}" class="button">Opret ønskeliste</a>
     </div>
 
     <!-- Knap til at logge ud -->
-    <div class="wrap">
-        <button onclick= type="button" style="background-color: #f44336;">Log ud</button>
-    </div>
+    <a th:href="@{/logout}" class="button" style="background-color: #f44336;">Log ud</a>
 </div>
 </body>
 </html>

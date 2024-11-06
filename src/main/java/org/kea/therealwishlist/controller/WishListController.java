@@ -1,8 +1,6 @@
 package org.kea.therealwishlist.controller;
 
 import org.springframework.ui.Model;
-import org.kea.therealwishlist.model.User;
-import org.kea.therealwishlist.model.Wish;
 import org.kea.therealwishlist.model.WishList;
 import org.kea.therealwishlist.service.WishListService;
 import org.springframework.stereotype.Controller;
@@ -31,7 +29,7 @@ public class WishListController {
 
         redirectAttributes.addFlashAttribute("message", "Wish list successfully created! Happy wishing!");
 
-        return "redirect:"; // SKAL LAVES: Fx omdirigere til brugerens liste over egne ønskelister eller til selve listen så man kan tilføje nye ønsker
+        return "welcome"; // SKAL LAVES: Fx omdirigere til brugerens liste over egne ønskelister eller til selve listen så man kan tilføje nye ønsker
     }
 
     // Hent alle ønskelister fra en specifik bruger (userID) ...
