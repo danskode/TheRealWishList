@@ -4,11 +4,17 @@ public class WishList {
 
     private int id;
     private int userId;
-    private String listName;
+    private String wishListName;
 
-    public WishList(int userId, String listName) {
+    public WishList(int userId, String wishListName) {
         this.userId = userId;
-        this.listName = listName;
+        this.wishListName = wishListName;
+    }
+
+    public WishList(int id, int userId, String wishListName) {
+        this.id = id;
+        this.userId = userId;
+        this.wishListName = wishListName;
     }
 
     // Gettere
@@ -20,8 +26,8 @@ public class WishList {
         return userId;
     }
 
-    public String getListName() {
-        return listName;
+    public String getWishListName() {
+        return wishListName;
     }
 
     // Settere
@@ -33,7 +39,7 @@ public class WishList {
         this.userId = userId;
     }
 
-    public void setListName(String listName) {
-        this.listName = listName;
+    public void setWishListName(String wishListName) {
+        this.wishListName = wishListName;
     }
 }

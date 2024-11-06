@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a new wishlist</title>
+</head>
+<body>
+
+<h3>Create a new wishlist</h3>
+
+<form th:action="@{/savewishlist}" method="post">
+    <label for="wishListName">List name:</label>
+    <input type="text" name="wishListName" id="wishListName" />
+
+    <!-- Skjult felt for userID, sat til 1 -->
+    <input type="hidden" name="userID" value="1" />
+
+    <button type="submit">Create Wishlist</button>
+</form>
+
+</body>
+</html>
