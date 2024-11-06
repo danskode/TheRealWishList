@@ -1,6 +1,5 @@
 package org.kea.therealwishlist.repository;
 
-import org.kea.therealwishlist.model.Wish;
 import org.kea.therealwishlist.model.WishList;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,7 +10,7 @@ import java.util.List;
 @Repository
 public class WishListRepository {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     // Injecter JdbcTemplate i konstruktøren
     public WishListRepository(org.springframework.jdbc.core.JdbcTemplate jdbcTemplate) {
