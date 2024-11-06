@@ -1,5 +1,6 @@
 package org.kea.therealwishlist.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.kea.therealwishlist.model.User;
 import org.kea.therealwishlist.repository.UserRepository;
 import org.kea.therealwishlist.service.UserService;
@@ -37,21 +38,22 @@ public class UserController {
 
         model.addAttribute("message", "User succesfully created! Happy wishing!");
 
-        return "test";// omdirigeres til en liste over sine ønskelister - opret ønskeliste??
+        return "frontpage";// omdirigeres til en liste over sine ønskelister - opret ønskeliste??
     }
 
     // Viser login-siden / vores forside
-    @GetMapping("")
+    @GetMapping({"/login"})
     public String showLoginForm(Model model) {
         // Et tomt User-objekt tilføjet til modellen, som kan bruges i formularen
         model.addAttribute("user", new User());
-        return "login";
+        return "frontpage";
     }
 
     // Når brugeren indsender loginformularen, tjekker denne metode brugernavn og adgangskode
     @PostMapping("/login")
     public String loginUser(@RequestParam("username") String username, // brugernavn indtastet af brugeren
-                            @RequestParam("password") String password, // kodeord indtastet af brugeren
+                            @RequestParam("password") String password,
+                            HttpSession session,// kodeord indtastet af brugeren
                             Model model) { // Model-objektet bruges til at sende data til HTML-siden
 
         // Kalder loginUser fra userService og forsøger at logge ind
@@ -59,11 +61,33 @@ public class UserController {
 
         // Tjekker om brugeren blev fundet
         if (user != null) {
+            session.setAttribute("username", user.getUserName());
             model.addAttribute("user", user);
-            return "test"; // her kan brugeren se sine ønskelister (NICOLAI)
+
+            return "redirect:welcome"; // her kan brugeren se sine ønskelister (NICOLAI)
         } else {
             model.addAttribute("error", "Forkert brugernavn eller adgangskode!");
-            return "login"; // returnerer login-siden med fejlbesked
+            return "frontpage"; // returnerer login-siden med fejlbesked
         }
+    }
+
+    @GetMapping("/welcome")
+    public String showWelcomePage(HttpSession session, Model model) {
+        //User user = (User) session.getAttribute("user");
+        String username = (String) session.getAttribute("username");
+
+        // Hvis brugeren er logget ind, send deres navn til modellen
+        if (username != null) {
+            model.addAttribute("username", username);  // eller brug user.getFullName(), afhængig af, hvad du vil vise
+            return "welcome";  // Navnet på din HTML-template (f.eks. "welcome.html")
+        } else {
+            return "redirect:/login";  // Hvis brugeren ikke er logget ind, send dem til login-siden
+        }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 }
