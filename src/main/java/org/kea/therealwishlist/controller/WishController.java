@@ -22,8 +22,21 @@ public class WishController {
 
     @GetMapping("/wishes")
     public String getWishes(Model model) {
-        List<Wish> wishes = wishService.getWishes();
+        List<Wish> wishes = wishService.getWishesByUserID();
         model.addAttribute("wishes", wishes);
         return "wishes";
     }
+
+    // opret ønske
+
+    // opdater ønske
+
+    // slet ønske
+
+    //HTML - wish
+
+    //HTML - createWish
+
+    //HTML - editWish
+
 }

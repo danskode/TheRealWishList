@@ -18,8 +18,8 @@ public class WishRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Wish> findAll() {
-        String sql = "SELECT * FROM wish";
+    public List<Wish> findAllByUserID(int userID) {
+        String sql = "SELECT * FROM wish WHERE user_id = ?";
 
         // Definerer en RowMapper for at mappe resultaterne til Wish objekter
         RowMapper<Wish> rowMapper = (resultSet, rowNum) -> new Wish(
