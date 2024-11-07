@@ -15,6 +15,12 @@ public class User {
         this.userPassword = userPassword;
     }
 
+    public User(int userID, String userName, String userPassword) {
+        this.userID = userID;
+        this.userName = userName;
+        this.userPassword = userPassword;
+    }
+
     // Getters and setters
 
     public int getUserID() {

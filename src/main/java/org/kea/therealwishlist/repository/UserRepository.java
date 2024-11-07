@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserRepository {
 
-// Ved at bruge JdbcTemplate slipper du for at angive url, user, og password direkte i koden, da Spring Boot henter disse fra de korrekte application-filer baseret på den aktive profil.
+    // Ved at bruge JdbcTemplate slipper du for at angive url, user, og password direkte i koden, da Spring Boot henter disse fra de korrekte application-filer baseret på den aktive profil.
     private final JdbcTemplate jdbcTemplate; // Bruges til at udføre SQL-spørgsmål til databasen
 
     // En konstruktør til at initialisere jdbcTemplate, når UserRepository oprettes
@@ -30,6 +30,7 @@ public class UserRepository {
         try {
             return jdbcTemplate.queryForObject(sql, new Object[]{username, password}, // Forsøger at finde en bruger med de matchende oplysninger
                     (rs, rowNum) -> new User(
+                            rs.getInt("id"),
                             rs.getString("user_name"), // henter brugernavn fra db og sætter det på User-objektet
                             rs.getString("user_password") // henter kodeord fra db og sætter det på User-objektet
                     )
@@ -39,7 +40,28 @@ public class UserRepository {
         }
 
     }
+
+    public User findUserByUsername(String username) {
+        String sql = "SELECT * FROM \"user\" WHERE `user_name` = ?";
+
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{username},
+                    (rs, rowNum) -> {
+                        User user = new User(
+                                rs.getString("user_name"),  // Hent user_name
+                                rs.getString("user_password")  // Hent user_password
+                        );
+                        user.setUserID(rs.getInt("id"));  // Hent user_id og sæt det på objektet
+                        return user;
+                    }
+            );
+        } catch (EmptyResultDataAccessException e) {
+            return null;  // Hvis ingen bruger findes med dette brugernavn, returneres null
+        }
+    }
+
 }
+
 
 
 

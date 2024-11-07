@@ -13,7 +13,7 @@
     <input type="text" name="wishListName" id="wishListName" />
 
     <!-- Skjult felt for userID, sat til 1 -->
-    <input type="hidden" name="userID" value="1" />
+    <input type="hidden" id="userID" th:field="*{user.userID}" />
 
     <button type="submit">Create Wishlist</button>
 </form>

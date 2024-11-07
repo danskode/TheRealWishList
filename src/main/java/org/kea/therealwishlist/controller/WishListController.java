@@ -1,5 +1,7 @@
 package org.kea.therealwishlist.controller;
 
+import jakarta.servlet.http.HttpSession;
+import org.kea.therealwishlist.model.User;
 import org.springframework.ui.Model;
 import org.kea.therealwishlist.model.WishList;
 import org.kea.therealwishlist.service.WishListService;
@@ -19,9 +21,18 @@ public class WishListController {
     }
 
     @GetMapping("/createwishlist")
-    public String createWishList() {
-        return "createwishlist";
+    public String createWishList(HttpSession session, Model model) {
+        // Henter brugeren fra sessionen
+        User user = (User) session.getAttribute("user");
+
+        // Tjekker om brugeren er logget ind
+        if (user == null) {
+            return "redirect:login"; // omdirigerer til login, hvis brugeren ikke er logget ind
+        }
+        model.addAttribute("user", user); // Sender brugerens data videre til HTML-siden
+        return "createWishList"; // Siden hvor brugeren kan oprette en ønskeliste
     }
+
 
     @PostMapping("/savewishlist")
     public String createWishList(@RequestParam String wishListName, @RequestParam int userID, RedirectAttributes redirectAttributes) {
@@ -29,23 +40,9 @@ public class WishListController {
 
         redirectAttributes.addFlashAttribute("message", "Wish list successfully created! Happy wishing!");
 
-        return "welcome"; // SKAL LAVES: Fx omdirigere til brugerens liste over egne ønskelister eller til selve listen så man kan tilføje nye ønsker
+        return "redirect:welcome";
     }
 
-    // Hent alle ønskelister fra en specifik bruger (userID) ...
-    @GetMapping("wishlists/{userID}")
-    public String showWishListFromUserID(@PathVariable int userID, Model model) {
-        // Der skal kunne hentes userID automatisk fra cookies ... skal injectes i  metoden!!!
-        List<WishList> wishLists = wishListService.getAllWishListsFromUserID(userID);
-        model.addAttribute("wishLists", wishLists);
-        return "wishlists";
-    }
-
-    /* Samme bare med cookie ...
-    @GetMapping("/wishList")
-    public String showWishListFromUserID(@CookieValue("userID") int userID, Model model) {
-    // Henter ønskelisterne for brugeren med det `userID`, der findes i cookien
-     */
 
     /*
     @GetMapping("/{userName}/{wishListName}")

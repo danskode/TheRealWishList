@@ -11,10 +11,22 @@
     <h1>Velkommen, <span th:text="${username}">Brugernavn</span></h1>
     <h2>Dine ønskelister</h2>
 
-    <p>Du har ingen ønskelister endnu. Klik på "Opret ønskeliste" for at komme i gang!</p>
+    <!-- Vis besked hvis der ikke er nogen ønskelister -->
+    <p th:if="${#lists.isEmpty(wishLists)}">Du har ingen ønskelister endnu. Klik på "Opret ønskeliste" for at komme i gang!</p>
 
     <div class="wishlist-list">
-        <!-- En liste over ønkselister:) -->
+        <table th:if="${!#lists.isEmpty(wishLists)}">
+            <thead>
+            <tr>
+                <th>Ønskeliste Navn</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="wishList : ${wishLists}">
+                <td th:text="${wishList.wishListName}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="wrap">

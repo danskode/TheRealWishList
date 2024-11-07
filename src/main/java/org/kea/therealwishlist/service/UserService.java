@@ -23,4 +23,8 @@ public class UserService {
     public User loginUser(String username, String password) {
         return userRepository.loginUser(username, password);
     }
+
+    public User findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
+    }
 }
