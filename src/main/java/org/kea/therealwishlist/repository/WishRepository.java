@@ -32,6 +32,43 @@ public class WishRepository {
         // Brug JdbcTemplate til at udføre forespørgslen og returnere listen over wishes
         return jdbcTemplate.query(sql, rowMapper);
     }
+
+    public void createWish(Wish wish){
+        String sql = "INSERT INTO wish (wish_name, wish_url, wish_price, wish_reserved, wish_list_id) VALUES (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql,
+                wish.getWishName(),
+                wish.getUrl(),
+                wish.getPrice(),
+                wish.isReserved(),
+                wish.getWishListID()
+        );
+    }
+
+    public Wish findWishByID(int wishID){
+        String sql = "SELECT * FROM wish WHERE id = ?";
+        RowMapper<Wish> rowMapper = (resultSet, rowNum) -> new Wish(
+                resultSet.getInt("id"),
+                resultSet.getString("wish_name"),
+                resultSet.getString("wish_url"),
+                resultSet.getFloat("wish_price"),
+                resultSet.getBoolean("wish_reserved")
+        );
+        return jdbcTemplate.queryForObject(sql, rowMapper, wishID);
+    }
+
+    public Wish updateWish(Wish wish) {
+        System.out.println("Attempting to update wish with ID: " + wish.getWishID());
+        System.out.println("Nye navn: " + wish.getWishName());
+        System.out.println("ny pris: " + wish.getPrice());
+        System.out.println("den nye URL: " + wish.getUrl());
+
+        String sql = "UPDATE wish SET wish_name = ?, wish_url = ?, wish_price = ? WHERE id = ?";
+        int rowsAffected = jdbcTemplate.update(sql, wish.getWishName(), wish.getUrl(), wish.getPrice(), wish.getWishID());
+        System.out.println("Rows affected: " + rowsAffected);
+
+        return wish;
+    }
+
 }
 
 

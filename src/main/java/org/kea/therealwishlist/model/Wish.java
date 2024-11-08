@@ -7,6 +7,7 @@ public class Wish {
     private String url;
     private float price;
     private boolean reserved;
+    private int wishListID;
 
 
     public Wish(String wishName, String url, float price, boolean reserved) {
@@ -14,6 +15,10 @@ public class Wish {
         this.url = url;
         this.price = price;
         this.reserved = reserved;
+    }
+
+    public Wish() {
+
     }
 
     public Wish(int wishID, String wishName, String url, float price, boolean reserved) {
@@ -40,6 +45,10 @@ public class Wish {
     public boolean isReserved() {
         return reserved; }
 
+    public int getWishListID() {
+        return wishListID;
+    }
+
     // Setters
     public void setWishID(int wishID) {
         this.wishID = wishID; }
@@ -55,6 +64,10 @@ public class Wish {
 
     public void setReserved(boolean reserved) {
         this.reserved = reserved; }
+
+    public void setWishListID(int wishListID) {
+        this.wishListID = wishListID;
+    }
 
 
 }
