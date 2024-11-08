@@ -20,4 +20,16 @@ public class WishService {
         return wishRepository.findAllByUserID(userID);
     }
 
+    public void getCreateWish(Wish wish) {
+        wishRepository.createWish(wish);
+    }
+
+    public Wish getWishByID(int id) {
+        return wishRepository.findWishByID(id);
+    }
+
+    public void getUpdateWish(Wish wish) {
+        wishRepository.updateWish(wish);
+    }
+
 }

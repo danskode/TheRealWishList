@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Ønsk Genbrug - Opret Ønske</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.jpeg" type="image/jpeg">
+</head>
+<body>
+<div class="main">
+    <h1>Opret et ønske</h1>
+
+    <form th:action="@{/savewish}" method="post">
+        <input type="hidden" th:value="${wishListID}" name="wishListID" />
+        <label for="wishName">Navngiv ønske:</label>
+        <input type="text" id="wishName" name="wishName" required />
+
+        <label for="price">Pris:</label>
+        <input type="number" id="price" name="price" required />
+
+        <label for="url">URL:</label>
+        <input type="url" id="url" name="url" required />
+
+        <button type="submit">Opret Ønske</button>
+    </form>
+
+    <!-- Tilbage knap -->
+    <div class="wrap">
+        <a th:href="@{/welcome}" class="button" style="background-color: #f44336;">Tilbage</a>
+    </div>
+</div>
+</body>
+</html>
