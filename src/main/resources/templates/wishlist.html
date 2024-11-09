@@ -10,12 +10,24 @@
 <h1>Ønskeliste: <span th:text="${wishes.wishListName}"></span></h1>
 <table>
     <tbody>
+    <tr>
+        <th>Ønske</th>
+        <th>Link</th>
+        <th>Pris</th>
+        <th>Reserveret</th>
+    </tr>
     <!-- Tjekker om wishList er sat -->
     <tr th:if="${wishes.wishList != null}" th:each="wish : ${wishes.wishList}">
         <td th:text="${wish.getWishName()}"></td>
         <td><a th:href="${wish.getUrl()}" th:text="${wish.getUrl}">Link</a></td>
         <td th:test="${wish.getPrice()}"></td>
-        <td th:text="${wish.isReserved() ? 'Ja' : 'Nej'}"></td>
+        <!-- <td th:text="${wish.isReserved() ? 'Ja' : 'Nej'}"></td> -->
+        <td>
+            <span th:if="${wish.reserved}" th:text="'Ja'"></span>
+            <button th:if="${!wish.reserved}" type="button">Reserver</button>
+        </td>
+        <td><button type="button">DELETE</button></td>
+        <td><button type="button">UPDATE</button></td>
     </tr>
     <tr th:if="${wishes.wishList == null || wishes.wishList.isEmpty()}">
         <td colspan="5">Du har endnu ikke nogle ønsker i denne ønskeliste.</td>
