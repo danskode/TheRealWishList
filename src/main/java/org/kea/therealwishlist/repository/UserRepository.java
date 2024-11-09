@@ -26,7 +26,8 @@ public class UserRepository {
     // Metode til at logge en bruger ind
     // User - er returtypen for metoden! Så metoden vil returnere et objekt af typen User
     public User loginUser(String username, String password) { //Brugeren indtaster username og password
-        String sql = "SELECT * FROM \"user\" WHERE `user_name` = ? AND `user_password` = ?";
+        //String sql = "SELECT * FROM \"user\" WHERE `user_name` = ? AND `user_password` = ?"; <-- \"user\" virker ikke med MySQL, der skal det være --> `user`
+        String sql = "SELECT * FROM `user` WHERE `user_name` = ? AND `user_password` = ?";
         try {
             return jdbcTemplate.queryForObject(sql, new Object[]{username, password}, // Forsøger at finde en bruger med de matchende oplysninger
                     (rs, rowNum) -> new User(

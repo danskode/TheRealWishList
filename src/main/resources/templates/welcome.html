@@ -16,21 +16,18 @@
 
     <div class="wishlist-list">
         <table th:if="${!#lists.isEmpty(wishLists)}">
-            <thead>
-            <tr>
-                <th>Ønskeliste Navn</th>
-            </tr>
-            </thead>
             <tbody>
             <tr th:each="wishList : ${wishLists}">
-                <td th:text="${wishList.wishListName}"></td>
+                <td><a th:href="@{/wishlist/{wishListID}(wishListID=${wishList.id})}" th:text="${wishList.wishListName}"></a></td>
+                <td>SLET</td>
+                <td>OPDATER</td>
             </tr>
             </tbody>
         </table>
     </div>
 
     <div class="wrap">
-        <a th:href="@{/createwishlist}" class="button">Opret ønskeliste</a>
+        <a th:href="@{/createwishlist}" class="button">Opret ny ønskeliste</a>
     </div>
 
     <!-- Knap til at logge ud -->
