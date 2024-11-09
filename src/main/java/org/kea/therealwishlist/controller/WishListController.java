@@ -43,12 +43,23 @@ public class WishListController {
         return "redirect:welcome";
     }
 
+    @GetMapping("wishlist/{wishListID}")
+    public String showWishListByWishLIstIDAndUserID(Model model, @PathVariable int wishListID, HttpSession session) {
+        // Hent userID fra sessionen ...
+        //Integer userID = (Integer) session.getAttribute("userID");
+        User user = (User) session.getAttribute("user");
 
-    /*
-    @GetMapping("/{userName}/{wishListName}")
-    public String userWishList(Model model, @PathVariable String userName, @PathVariable String wishListName) {
-        List<Wish> wishes = wishListService.getWishesFromUserNameAndWishListName(userName, wishListName);
-        return "wishList";
-    }
-     */
+        // Tjek, om userID er sat i session ...
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        // Brug userID til at hente ønskelister
+        WishList wishes = wishListService.getWishListFromWishListIDAndUserID(wishListID, user.getUserID());
+
+        // Tilføj ønskerne til modellen
+        model.addAttribute("wishes", wishes);
+
+        return "wishlist";
+        }
 }

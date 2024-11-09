@@ -16,16 +16,19 @@ public class WishListService {
         this.wishListRepository = wishListRepository;
     }
 
-//    public List<Wish> getWishesFromUserNameAndWishListName(String userName, String wishListName) {
-//        // her skal være en metode til at hente en specifik brugers ønskeliste ...
-//        wishListRepository.getWishesFromUserNameAndWishListName(userName, wishListName);
-//    }
-
+    // Metode til at oprette en ny ønskeliste ...
     public void createWishList(String wishListName, int userID) {
         wishListRepository.createWishList(wishListName, userID);
     }
 
+    // Metode til at hente en liste over alle en brugers ønskelister ...
     public List<WishList> getAllWishListsFromUserID(int userID) {
         return wishListRepository.getAllWishListsFromUserID(userID);
     }
+
+    // Metode til at hente en specifik ønskeliste og dens tilknyttede ønsker ...
+    public WishList getWishListFromWishListIDAndUserID(int wishListID, int userID){
+        return wishListRepository.getWishListFromWishListIDAndUserID(wishListID, userID);
+    }
+
 }
