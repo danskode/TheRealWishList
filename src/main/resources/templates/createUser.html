@@ -12,15 +12,15 @@
     <h2>Det kræver kun et brugernavn og en adgangskode</h2>
 
 <form action="#" th:action="@{/save}" th:object="${user}" method="post">
-    <label for="userName">Name:</label>
+    <label for="userName">Navn:</label>
     <input type="text" id="userName" th:field="*{userName}" />
 
-    <label for="userPassword">Password:</label>
+    <label for="userPassword">Adgangskode:</label>
     <input type="password" id="userPassword" th:field="*{userPassword}" />
 
     <div class="wrap">
     <button type="submit">
-        Create User
+        Klik her for at oprette
     </button>
     </div>
 </form>
