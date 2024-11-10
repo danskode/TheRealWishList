@@ -19,8 +19,7 @@
             <tbody>
             <tr th:each="wishList : ${wishLists}">
                 <td><a th:href="@{/wishlist/{wishListID}(wishListID=${wishList.id})}" th:text="${wishList.wishListName}"></a></td>
-                <td><button>DELETE</button></td>
-                <td><button>UPDATE</button></td>
+                <td><button style="background-color: #f44336;">Slet</button></td>
             </tr>
             </tbody>
         </table>

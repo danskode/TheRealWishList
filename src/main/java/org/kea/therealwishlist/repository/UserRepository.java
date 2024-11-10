@@ -18,7 +18,8 @@ public class UserRepository {
 
     // Metode til at oprette en ny bruger i db
     public void createUser(User user) {
-        String sql = "INSERT INTO \"user\" (user_name, user_password) VALUES (?, ?)";
+        //String sql = "INSERT INTO \"user\" (user_name, user_password) VALUES (?, ?)";
+        String sql = "INSERT INTO `user` (user_name, user_password) VALUES (?, ?)";
         jdbcTemplate.update(sql, user.getUserName(), user.getUserPassword());
     }
 
@@ -43,7 +44,8 @@ public class UserRepository {
     }
 
     public User findUserByUsername(String username) {
-        String sql = "SELECT * FROM \"user\" WHERE `user_name` = ?";
+        // String sql = "SELECT * FROM \"user\" WHERE `user_name` = ?";
+        String sql = "SELECT * FROM `user` WHERE `user_name` = ?";
 
         try {
             return jdbcTemplate.queryForObject(sql, new Object[]{username},
