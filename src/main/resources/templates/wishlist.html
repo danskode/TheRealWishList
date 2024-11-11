@@ -29,7 +29,12 @@
             <button th:if="${!wish.reserved}" type="button">Reservér</button>
         </td>
         <td><a th:href="@{/editwish/{id}(id=${wish.getWishID()})}"><button type="button">Redigér</button></a></td>
-        <td><button class="delete-button">Slet</button></td>
+        <td>
+            <form th:action="@{/deletewish}" method="post">
+                <input type="hidden" name="wishID" th:value="${wish.wishID}" />
+                <button type="submit">Slet</button>
+            </form>
+        </td>
 
     </tr>
     <tr th:if="${wishes.wishList == null || wishes.wishList.isEmpty()}">

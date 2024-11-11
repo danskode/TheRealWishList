@@ -69,6 +69,11 @@ public class WishRepository {
         return wish;
     }
 
+    public void deleteWish(int wishID) {
+        String sql = "DELETE FROM wish WHERE id = ?";
+        jdbcTemplate.update(sql, wishID);
+    }
+
 }
 
 

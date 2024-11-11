@@ -32,4 +32,8 @@ public class WishService {
         wishRepository.updateWish(wish);
     }
 
+    public void deleteWish(int wishID) {
+        wishRepository.deleteWish(wishID);
+    }
+
 }
