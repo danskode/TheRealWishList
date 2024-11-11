@@ -73,4 +73,25 @@ public class WishListController {
             return "error"; // Send brugeren til en fejlside ved fejl ...
         }
     }
+
+    // Update wishlist-metode ...
+    // Først GET-mapping for at vise opdateringsformularen
+    @GetMapping("/updateWishList/{wishListID}")
+    public String showUpdateWishListForm(@PathVariable int wishListID, Model model) {
+        // Hent ønskelisten baseret på wishListID
+        WishList wishList = wishListService.getWishListById(wishListID);
+
+        // Tilføj ønskelisten til modellen
+        model.addAttribute("wishList", wishList);
+
+        // Returner Thymeleaf-skabelonen for opdateringsformularen
+        return "updateWishList";
+    }
+
+    // Så POST-mapping for at gemme ændringerne til specifik wishlist (ovenfor) ...
+    @PostMapping("/updateWishList")
+    public String updateWishListByIDWithNewName(@RequestParam("wishListId") int wishListId, @RequestParam("wishListName") String wishListName) {
+        wishListService.updateWishList(wishListId, wishListName);
+        return "redirect:/welcome";
+    }
 }
