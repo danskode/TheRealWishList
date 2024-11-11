@@ -48,7 +48,7 @@ public class UserController {
     }
 
     // Viser login-siden / vores forside
-    @GetMapping({"/login"})
+    @GetMapping({""})
     public String showLoginForm(Model model) {
         // Et tomt User-objekt tilføjet til modellen, som kan bruges i formularen
         model.addAttribute("user", new User());
@@ -96,6 +96,6 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/";
     }
 }
