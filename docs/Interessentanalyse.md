@@ -1,24 +1,22 @@
 # Interessentanalyse
 
 ## KUNDEN: 
-Den Blå Avis ønsker at få en ønskeliste-funktion.
+Den Blå Avis ønsker at få en ønskeliste-funktion til jul.
 
 ## VORES ORGANISATION:
-En mindre start-up. Ejerne, der er sælgere/projektledere.
-... dataetik (ikke offentlige, kun delte for at sikre mod profilering i forbindelse markedsføring og andet), jura, bæredygtighed (genbrug), ressourcer (tidsforbrug)
-Brugerdata: brug og beskyttelse ...
+Opgaven er blevet tildelt det lille udviklerhus på tre personer. Vi er to juniorudviklere og en sælger, der ejer virksomheden. Det er en stor opgave for en stor kunde.
 
-### IT- og forretningsforståelse:
--	Herunder udvikling af bæredygtige løsninger. Her er det relevant at overveje, hvordan løsningen på bedst mulig måde understøtter fagets teoretiske dele vedr. projektledelse, samarbejde, og etiske spørgsmål, det kunne være relevant at indarbejde teknologiske løsninger, der sikrer minimal påvirkning på klima og miljø samtidig med at tage hensyn til FN verdensmål på i drift og i udviklingsprocessen, fx undgå børnearbejde. Det kunne også være relevant at arbejde med GDPR, hvis projektet havde stillet krav til datasikkerhed.
+### Interne interessenter
+- Chefen, der også er sælger og kontaktperson ud til kunden. Her er det vigtigt, at få afklaret løbende, hvad to udviklere kan klare, så projektet ikke løber ind i ressourcemangel, og det er vigtigt løbende at få afklaret, hvordan opgaven skal løses, så sælger er klædt på til at tage dialogen med kunden, og der undgås misforståelser og scope creep. 
 
-### Programmering:
--	Det er vigtigt at projektet lever op til de udviklingskrav, som der er blevet undervist i i faget gennem de to første semestre og ikke mindst tager de forskellige framework,API’er, klasser og hjælpeklasser, der er blevet brugt med i projektet.
+### Kunden
+-	Det er en stor kunde, der har valgt en mindre samarbejdspartner for at det passer ind i CSR-profilen. Det betyder også, at der risiko for at kunden kan overvurdere mulighederne i det lille udviklerhus. Hertil er der også afklaring på hvilke systemer, som kunden allerede har og bruger, som systemet skal kodes op imod. Det er endnu ikke afklaret. 
 
-### Systemudvikling:
--	Her er det relevant at arbejde med ER modeller og user stories, for at sikre at denne interessents interesser er dækket. Her er det også relevant at overveje strategien for CI/CD.
+### CSR og miljøpåvirkning
+-	Dette er et projekt, der skal gøre det nemmere at få genbrug i julegave. Men det kommer med en risiko, hvis selv systemet udleder for meget ved fx hostingløsningen.
 
-### Teknologi:
--	Dette semester har især lagt vægt på MySQL-databaser og deployment til Azure som PAAS. Derfor er det relevant at inddrage disse teknologier i projektet.
+### Jura, GDPR:
+-	Vi arbejder med brugere, derfor er der et juridisk spor, der har skulle afklares. Valget er blevet at hold indsamlingen af brugeroplysninger på et minimum, så vi ikke risikerer, at en kunde fx mister personlige oplysninger ved et databrud. 
 
 ## SLUTBRUGEREN:
 Til vores projekt er der lagt vægt på den fiktive slutbruger af systemet. Hvor Ønskeskyen har både B2C og B2B i deres platform.
