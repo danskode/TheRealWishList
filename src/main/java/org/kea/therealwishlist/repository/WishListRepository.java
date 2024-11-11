@@ -41,19 +41,38 @@ public class WishListRepository {
         return jdbcTemplate.query(sql, rowMapper, userID);
     }
 
-    // Hent en specifik ønskeliste og tilføj ønskerne til listen ...
+
+
+
+
+
+    // Metode til at hente alle ønskelister som er delt med en specifik bruger (userID) ...
+    public List<WishList> getAllSharedWishListsFromUserID(int userID){
+        String sql = "SELECT * FROM wish_item_reservation wir JOIN wish w ON wir.wish_id=w.id JOIN `user` u ON u.id=wir.user_id JOIN wish_list wl ON wl.id=w.wish_list_id WHERE wir.user_id=?;";
+
+        // Definerer en RowMapper for at mappe resultaterne til WishList objekter
+        RowMapper<WishList> rowMapper = (resultSet, rowNum) -> new WishList(
+                resultSet.getInt("id"),
+                resultSet.getInt("user_id"),
+                resultSet.getString("list_name")
+        );
+
+        // Brug JdbcTemplate til at udføre forespørgslen og returnere listen over wishlists
+        return jdbcTemplate.query(sql, rowMapper, userID);
+    }
+
+
+
+
+
+
+
+    // Hent en specifik ønskeliste. Listen skal tilhøre brugeren, der er logget ind ...
     public WishList getWishListFromWishListIDAndUserID(int wishListID, int userID) {
 
-        // OBS: denne kode tager to variable, men bruger pt kun den ene.
-        // Grunden er, at man på sigt skulle kunne bruge userid til at tjekke om det er brugerens egen ønskeliste
-        // eller en der er delt med dem til reservations-metoden ...
+        String sql = "SELECT wl.id AS wishlist_id, wl.user_id, wl.list_name, w.id AS wish_id, w.wish_name, w.wish_url, w.wish_price, w.wish_reserved FROM wish_list wl LEFT JOIN wish w ON wl.id = w.wish_list_id WHERE wl.id = ? AND wl.user_id = ? ORDER BY w.id";
 
-        String sql = "SELECT wl.id AS wishlist_id, wl.user_id, wl.list_name, w.id AS wish_id, w.wish_name, w.wish_url, w.wish_price, w.wish_reserved FROM wish_list wl LEFT JOIN wish w ON wl.id = w.wish_list_id WHERE wl.id = ? ORDER BY w.id";
-
-        //"SELECT * FROM wish_list wl LEFT JOIN wish w ON wl.id=w.wish_list_id WHERE wl.id = ?"; // LEFT JOIN for at sikre, at også lister uden ønsker kommer med
-
-
-        return jdbcTemplate.query(sql, new Object[]{wishListID}, rs -> {
+        return jdbcTemplate.query(sql, new Object[]{wishListID, userID}, rs -> {
         //return jdbcTemplate.query(sql, new Object[]{wishListID, userID}, rs -> {
             WishList wishList = null;
             List<Wish> wishes = new ArrayList<>();
@@ -158,4 +177,5 @@ public class WishListRepository {
         String sql = "UPDATE wish_list SET list_name = ? WHERE id = ?";
         jdbcTemplate.update(sql, wishListName, wishListId);
     }
+
 }
