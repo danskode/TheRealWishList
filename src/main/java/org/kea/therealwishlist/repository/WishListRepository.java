@@ -85,26 +85,11 @@ public class WishListRepository {
         });
     }
 
-
-
-
-//    // Metode til at hente en ønskeliste med udgangspunkt i et konkret wishID og et userID ...
-//    public WishList getWishList(String wishListID, int userID){
-//        String sql = "SELECT * FROM wish_list wl JOIN wish w ON w.wish_list_id=wl.id WHERE wl.id = ? AND wl.user_id = ?";
-//
-//        // Definerer en RowMapper for at mappe resultaterne til WishList objekter
-//        RowMapper<WishList> rowMapper = (resultSet, rowNum) -> new WishList(
-//                resultSet.getInt("id"),
-//                resultSet.getInt("user_id"),
-//                resultSet.getString("list_name")
-//        );
-//
-//        // Brug JdbcTemplate til at udføre forespørgslen og returnere listen over wishes
-//        return jdbcTemplate.queryForObject(sql, rowMapper, wishListName);
-//    }
-
-//    public String getWishListNameFromListID(int listID){
-//        String sql = "SELECT list_name FROM wish_list WHERE list_id = ?";
-//        jdbcTemplate.query
-//    }
+    // metode til at slette en wishlist ...
+    public void deleteWishListFromWishListID(int wishListID) {
+        String sql = "DELETE FROM wish WHERE wish_list_id = ?";
+        jdbcTemplate.update(sql, wishListID);
+        String sql2 = "DELETE FROM wish_list WHERE id = ?";
+        jdbcTemplate.update(sql2, wishListID);
+    }
 }

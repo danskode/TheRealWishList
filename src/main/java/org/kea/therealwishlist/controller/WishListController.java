@@ -62,4 +62,15 @@ public class WishListController {
 
         return "wishlist";
         }
+
+    // delete-metode til wishlist ...
+    @PostMapping("wishlist/delete/{wishListID}")
+    public String deleteWishList(@PathVariable int wishListID) {
+        try {
+            wishListService.deleteWishListFromWishListID(wishListID);
+            return "redirect:/welcome"; // Send brugeren tilbage til oversigten over ønskelister ...
+        } catch (Exception e) {
+            return "error"; // Send brugeren til en fejlside ved fejl ...
+        }
+    }
 }

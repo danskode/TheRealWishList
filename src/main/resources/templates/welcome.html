@@ -19,7 +19,9 @@
             <tbody>
             <tr th:each="wishList : ${wishLists}">
                 <td><a th:href="@{/wishlist/{wishListID}(wishListID=${wishList.id})}" th:text="${wishList.wishListName}"></a></td>
-                <td><button style="background-color: #f44336;">Slet</button></td>
+                <td><form th:action="@{/wishlist/delete/{wishListID}(wishListID=${wishList.id})}" method="post" style="display:inline;">
+                    <button type="submit" style="background-color: #f44336;">Slet</button>
+                </form></td>
             </tr>
             </tbody>
         </table>
