@@ -31,4 +31,9 @@ public class WishListService {
         return wishListRepository.getWishListFromWishListIDAndUserID(wishListID, userID);
     }
 
+    // Slet en øsnkeliste og tilhørende ønsker ...
+    public void deleteWishListFromWishListID(int wishListID){
+        wishListRepository.deleteWishListFromWishListID(wishListID);
+    }
+
 }
