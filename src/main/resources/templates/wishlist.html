@@ -30,9 +30,8 @@
         </td>
         <td><a th:href="@{/editwish/{id}(id=${wish.getWishID()})}"><button type="button">Redigér</button></a></td>
         <td>
-            <form th:action="@{/deletewish}" method="post">
-                <input type="hidden" name="wishID" th:value="${wish.wishID}" />
-                <button type="submit">Slet</button>
+            <form th:action="@{/deletewish/{wishID}(wishID=${wish.wishID})}" method="post">
+                <button type="submit" class="delete-button">Slet</button>
             </form>
         </td>
 

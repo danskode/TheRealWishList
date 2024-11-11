@@ -63,8 +63,8 @@ public class WishController {
     }
 
     // slet ønske
-    @PostMapping("/deletewish")
-    public String deleteWish(@RequestParam int wishID) {
+    @PostMapping("/deletewish/{wishID}")
+    public String deleteWish(@PathVariable int wishID) {
         wishService.deleteWish(wishID);
         return "redirect:/welcome";
     }
