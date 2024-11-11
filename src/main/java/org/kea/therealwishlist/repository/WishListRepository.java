@@ -154,7 +154,8 @@ public class WishListRepository {
 
     // (HALV) Metode til at hente alle ønsker som er reserveret af en specifik bruger (userID) ...
     public List<WishList> getAllSharedWishListsFromUserID(int userID){
-        // String sql = "SELECT * FROM wish_item_reservation wir JOIN wish w ON wir.wish_id=w.id JOIN `user` u ON u.id=wir.user_id JOIN wish_list wl ON wl.id=w.wish_list_id WHERE wir.user_id=?;";
+        //sql til at få adgang til reservationer, ønsker og bruger ...
+        String sql = "SELECT * FROM wish_item_reservation wir JOIN wish w ON wir.wish_id=w.id JOIN `user` u ON u.id=wir.user_id JOIN wish_list wl ON wl.id=w.wish_list_id WHERE wir.user_id=?;";
 
         // Definerer en RowMapper for at mappe resultaterne til WishList objekter
         RowMapper<WishList> rowMapper = (resultSet, rowNum) -> new WishList(
