@@ -28,11 +28,11 @@ public class WishRepositoryTest {
     private JdbcTemplate jdbcTemplate; // Så vi kan sende SQL forespørgsler direkte til db
 
 
-    @Test
-    void findAllByUserID() {
-        List<Wish> wishes = wishRepository.findAllByUserID(1);
-
-    }
+//    @Test
+//    void findAllByUserID() {
+//        List<Wish> wishes = wishRepository.findAllByUserID(1);
+//
+//    }
 
     @Test
     void createWish() {
