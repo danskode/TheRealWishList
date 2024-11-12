@@ -152,19 +152,19 @@ public class WishListRepository {
         jdbcTemplate.update(sql, wishListName, wishListId);
     }
 
-    // (HALV) Metode til at hente alle ønsker som er reserveret af en specifik bruger (userID) ...
-    public List<WishList> getAllSharedWishListsFromUserID(int userID){
-        //sql til at få adgang til reservationer, ønsker og bruger ...
-        String sql = "SELECT * FROM wish_item_reservation wir JOIN wish w ON wir.wish_id=w.id JOIN `user` u ON u.id=wir.user_id JOIN wish_list wl ON wl.id=w.wish_list_id WHERE wir.user_id=?;";
-
-        // Definerer en RowMapper for at mappe resultaterne til WishList objekter
-        RowMapper<WishList> rowMapper = (resultSet, rowNum) -> new WishList(
-                resultSet.getInt("id"),
-                resultSet.getInt("user_id"),
-                resultSet.getString("list_name")
-        );
-
-        // Brug JdbcTemplate til at udføre forespørgslen og returnere listen over wishlists
-        return jdbcTemplate.query(sql, rowMapper, userID);
-    }
+//    // (HALV) Metode til at hente alle ønsker som er reserveret af en specifik bruger (userID) ...
+//    public List<WishList> getAllSharedWishListsFromUserID(int userID){
+//        //sql til at få adgang til reservationer, ønsker og bruger ...
+//        String sql = "SELECT * FROM wish_item_reservation wir JOIN wish w ON wir.wish_id=w.id JOIN `user` u ON u.id=wir.user_id JOIN wish_list wl ON wl.id=w.wish_list_id WHERE wir.user_id=?;";
+//
+//        // Definerer en RowMapper for at mappe resultaterne til WishList objekter
+//        RowMapper<WishList> rowMapper = (resultSet, rowNum) -> new WishList(
+//                resultSet.getInt("id"),
+//                resultSet.getInt("user_id"),
+//                resultSet.getString("list_name")
+//        );
+//
+//        // Brug JdbcTemplate til at udføre forespørgslen og returnere listen over wishlists
+//        return jdbcTemplate.query(sql, rowMapper, userID);
+//    }
 }
