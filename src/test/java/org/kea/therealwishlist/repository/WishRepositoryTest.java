@@ -28,6 +28,7 @@ public class WishRepositoryTest {
     private JdbcTemplate jdbcTemplate; // Så vi kan sende SQL forespørgsler direkte til db
 
 
+//    Der er fejl i testen her – H2 mangler en user_id i tabellen user, siger fejlkoden ...
 //    @Test
 //    void findAllByUserID() {
 //        List<Wish> wishes = wishRepository.findAllByUserID(1);
