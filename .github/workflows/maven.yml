@@ -28,5 +28,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
+      Env:
+        DB_URL: ${{secrets.DB_URL}}
+        DB_USER: ${{secrets.DB_USER}}
+        DB_PASSWORD: ${{secrets.DB_PASSWORD}}
       run: mvn clean package --file pom.xml
 
