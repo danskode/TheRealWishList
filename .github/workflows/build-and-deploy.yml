@@ -61,3 +61,5 @@ jobs:
           app-name: 'TheRealWishList'
           slot-name: 'Production'
           package: '*.jar'
+        env:
+          SPRING_PROFILES_ACTIVE: 'prod'  # Her angives den aktive profil
