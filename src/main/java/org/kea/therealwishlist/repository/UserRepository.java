@@ -44,7 +44,7 @@ public class UserRepository {
     }
 
     public User findUserByUsername(String username) {
-        // String sql = "SELECT * FROM \"user\" WHERE `user_name` = ?";
+         //String sql = "SELECT * FROM \"user\" WHERE `user_name` = ?";
         String sql = "SELECT * FROM `user` WHERE `user_name` = ?";
 
         try {
