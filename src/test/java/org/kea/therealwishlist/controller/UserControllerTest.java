@@ -58,5 +58,5 @@ class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.model().attributeExists("username")) // Tjek at username er i modellen
                 .andExpect(MockMvcResultMatchers.model().attributeExists("userID")) // Tjek at userID er i modellen
                 .andExpect(MockMvcResultMatchers.model().attributeExists("wishLists")); // Tjek at wishLists er i modellen
-    }*/
-}
+    }
+}*/
