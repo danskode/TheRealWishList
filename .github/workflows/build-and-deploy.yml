@@ -1,5 +1,3 @@
-# GitHub Actions workflow for at bygge og deploye en Java-app til Azure Web App
-
 name: Build and deploy JAR app to Azure Web App - TheRealWishList
 
 on:
@@ -19,7 +17,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distribution: 'temurin'  # Kan være 'microsoft' eller 'temurin' baseret på din konfiguration
+          distribution: 'microsoft'
 
       - name: Build with Maven
         env:
@@ -41,7 +39,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write
+      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -52,14 +50,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_39BC629647DE4E21941535EFA4946EE1 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_0E4DCDACDE2846C19D5FAC5232DD735E }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F899FE2080CB461DAC21E04F62051B44 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'TheRealWishList'  # Azure Web App navnet
+          app-name: 'TheRealWishList'
           slot-name: 'Production'
           package: '*.jar'
