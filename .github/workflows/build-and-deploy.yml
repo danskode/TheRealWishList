@@ -1,4 +1,6 @@
-name: Build and deploy JAR app to Azure Web App - TheRealWishList
+# YAML-fil til build og deploy for Azure Web App - TRWL001
+
+name: Build and deploy JAR app to Azure Web App - TRWL001
 
 on:
   push:
@@ -9,7 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -39,8 +40,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
-
+      id-token: write
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
@@ -58,8 +58,8 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'TheRealWishList'
+          app-name: 'TRWL001'
           slot-name: 'Production'
           package: '*.jar'
         env:
-          SPRING_PROFILES_ACTIVE: 'prod'  # Her angives den aktive profil
+          SPRING_PROFILES_ACTIVE: 'prod'  # Sætter den aktive profil til 'prod'
