@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
 
 @Controller
 public class WishListController {
@@ -40,11 +39,16 @@ public class WishListController {
 
     @PostMapping("/savewishlist")
     public String createWishList(@RequestParam String wishListName, @RequestParam int userID, RedirectAttributes redirectAttributes) {
-        wishListService.createWishList(wishListName, userID);
+        try {
+            wishListService.createWishList(wishListName, userID);
 
-        redirectAttributes.addFlashAttribute("message", "Wish list successfully created! Happy wishing!");
+            redirectAttributes.addFlashAttribute("message", "Wish list successfully created! Happy wishing!");
 
-        return "redirect:welcome";
+            return "redirect:welcome";
+
+        } catch (Exception e) {
+            return "error";
+        }
     }
 
     @GetMapping("wishlist/{wishListID}")
@@ -102,8 +106,12 @@ public class WishListController {
     // Så POST-mapping for at gemme ændringerne til specifik wishlist (ovenfor) ...
     @PostMapping("/updateWishList")
     public String updateWishListByIDWithNewName(@RequestParam("wishListId") int wishListId, @RequestParam("wishListName") String wishListName) {
-        wishListService.updateWishList(wishListId, wishListName);
-        return "redirect:/welcome";
+        try {
+            wishListService.updateWishList(wishListId, wishListName);
+            return "redirect:/welcome";
+        } catch (Exception e) {
+            return "error";
+        }
     }
 
     // nico
