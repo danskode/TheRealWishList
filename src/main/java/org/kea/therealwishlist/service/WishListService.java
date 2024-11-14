@@ -1,6 +1,5 @@
 package org.kea.therealwishlist.service;
 
-import org.kea.therealwishlist.model.Wish;
 import org.kea.therealwishlist.model.WishList;
 import org.kea.therealwishlist.repository.WishListRepository;
 import org.springframework.stereotype.Service;

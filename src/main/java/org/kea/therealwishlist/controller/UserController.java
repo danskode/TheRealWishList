@@ -19,12 +19,10 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final UserRepository userRepository;
     private final WishListService wishListService;
 
-    public UserController(UserService userService, UserRepository userRepository, WishListService wishListService) {
+    public UserController(UserService userService, WishListService wishListService) {
         this.userService = userService;
-        this.userRepository = userRepository;
         this.wishListService = wishListService;
     }
 
@@ -40,11 +38,15 @@ public class UserController {
     // En ny instans af user/profile bliver oprettet
     @PostMapping("/save")
     public String createUser(@ModelAttribute ("user") User user, Model model) { //"user" binder dataene fra en HTML-formular til et Profile-objekt
-        userService.createUser(user); // kalder create metoden i Service
+        try {
+            userService.createUser(user); // kalder create metoden i Service
 
-        model.addAttribute("message", "User succesfully created! Happy wishing!");
+            model.addAttribute("message", "User succesfully created! Happy wishing!");
 
-        return "login";
+            return "login";
+        } catch (Exception e) {
+            return "error";
+        }
     }
 
     // Viser login-siden / vores forside

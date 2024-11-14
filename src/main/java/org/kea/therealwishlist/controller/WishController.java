@@ -11,20 +11,10 @@ import org.springframework.web.bind.annotation.*;
 public class WishController {
 
     private final WishService wishService;
-    private final WishRepository wishRepository;
 
-    public WishController(WishService wishService, WishRepository wishRepository) {
+    public WishController(WishService wishService) {
         this.wishService = wishService;
-        this.wishRepository = wishRepository;
     }
-
-   /* @GetMapping("/wishes")
-    public String getWishes(Model model) {
-        List<Wish> wishes = wishService.getWishesByUserID();
-        model.addAttribute("wishes", wishes);
-        return "wishes";
-    }
-    */
 
     @GetMapping("/createwish/{wishListID}")
     public String showCreateWishForm(@PathVariable int wishListID, Model model) {  // localhost:8080//createwish/1
@@ -36,9 +26,13 @@ public class WishController {
     // opret ønske
     @PostMapping("/savewish")
     public String createWish(@ModelAttribute Wish wish, @RequestParam int wishListID) {
-        wish.setWishListID(wishListID);  // Sæt wishListID i Wish-objektet
-        wishService.getCreateWish(wish);
-        return "redirect:/welcome"; // Hvor skal man hen ????
+        try {
+            wish.setWishListID(wishListID);  // Sæt wishListID i Wish-objektet
+            wishService.getCreateWish(wish);
+            return "redirect:/welcome"; // Hvor skal man hen ????
+        } catch (Exception e) {
+            return "error";
+        }
     }
 
     // opdater ønske
@@ -54,25 +48,28 @@ public class WishController {
 
     @PostMapping("/updatewish")
     public String updateWish(@ModelAttribute Wish wish) {
-        System.out.println("Wish ID: " + wish.getWishID());
-        System.out.println("Navn: " + wish.getWishName());
-        System.out.println("Pris: " + wish.getPrice());
-        wishService.getUpdateWish(wish); // opdaterer ønsket i db
-        return "redirect:/welcome"; // Hvor skal vi hen?
+        try {
+            System.out.println("Wish ID: " + wish.getWishID());
+            System.out.println("Navn: " + wish.getWishName());
+            System.out.println("Pris: " + wish.getPrice());
+            wishService.getUpdateWish(wish); // opdaterer ønsket i db
+            return "redirect:/welcome";
+        } catch (Exception e) {
+            return "error";
+        }
 
     }
 
     // slet ønske
     @PostMapping("/deletewish/{wishID}")
     public String deleteWish(@PathVariable int wishID) {
-        wishService.deleteWish(wishID);
-        return "redirect:/welcome";
+        try {
+            wishService.deleteWish(wishID);
+            return "redirect:/welcome";
+        } catch (Exception e) {
+            return "error";
+        }
     }
 
-    //HTML - wish
-
-    //HTML - createWish
-
-    //HTML - editWish
 
 }
