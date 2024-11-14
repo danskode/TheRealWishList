@@ -85,8 +85,13 @@ public class UserController {
         if (user != null) {
             model.addAttribute("username", user.getUserName());
             model.addAttribute("userID", user.getUserID());
+
             List<WishList> wishLists = wishListService.getAllWishListsFromUserID(user.getUserID());
             model.addAttribute("wishLists", wishLists);
+
+            // nico
+            List<WishList> othersWishLists = wishListService.getAllOtherWishLists(user.getUserID());
+            model.addAttribute("othersWishLists", othersWishLists);
 
             return "welcome";
         } else {

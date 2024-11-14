@@ -2,6 +2,8 @@ package org.kea.therealwishlist.controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.kea.therealwishlist.model.User;
+import org.kea.therealwishlist.model.Wish;
+import org.kea.therealwishlist.service.WishService;
 import org.springframework.ui.Model;
 import org.kea.therealwishlist.model.WishList;
 import org.kea.therealwishlist.service.WishListService;
@@ -14,9 +16,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class WishListController {
 
     private final WishListService wishListService;
+    private final WishService wishService;
 
-    public WishListController(WishListService wishListService) {
+    public WishListController(WishListService wishListService, WishService wishService) {
         this.wishListService = wishListService;
+        this.wishService = wishService;
     }
 
     @GetMapping("/createwishlist")
@@ -109,4 +113,49 @@ public class WishListController {
             return "error";
         }
     }
+
+    // nico
+    @GetMapping("otherswishlist/{wishListID}")
+    public String showOthersWishListByWishLIstIDAndUserID(Model model, @PathVariable int wishListID, HttpSession session) {
+
+        //Integer userID = (Integer) session.getAttribute("userID");
+        User user = (User) session.getAttribute("user");
+
+        // Tjek, om userID er sat i session ...
+        if (user == null) {
+            return "redirect:/";
+        }
+
+        // Brug wishListID til at hente ønskelister
+        WishList wishes = wishListService.getWishListById(wishListID);
+
+        // Tilføj ønskerne til modellen
+        model.addAttribute("wishes", wishes);
+        // Tilføjer userID til modellen
+        model.addAttribute("userId", user.getUserID());
+        model.addAttribute("wishList_userID", wishes.getUserId());
+
+        // Debugging - udskriv værdier
+        System.out.println("User ID: " + user.getUserID());
+        System.out.println("WishList User ID: " + wishes.getUserId());
+
+        return "otherswishlist";
+    }
+
+    // nico
+    @PostMapping("/reserveWish")
+    public String reserveWish(@RequestParam("wish_id") int wishId, @RequestParam("user_id") int userId) {
+        // Hent ønsket og brugeren
+        Wish wish = wishService.getWishByID(wishId);
+        int wlID = wishListService.getWishLisIdFromWishId(wishId);
+        if (wish != null && !wish.isReserved()) {
+            // Opret en reservation i databasen
+            wishService.createReservation(wishId);
+        }
+
+        // Omdirigér tilbage til ønskelisten
+        // int wishListId = wish.getWishListID();
+        return "redirect:/otherswishlist/" + wlID;
+    }
+
 }
