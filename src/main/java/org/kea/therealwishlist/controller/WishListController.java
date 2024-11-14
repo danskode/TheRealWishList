@@ -59,6 +59,13 @@ public class WishListController {
 
         // Tilføj ønskerne til modellen
         model.addAttribute("wishes", wishes);
+        // Tilføjer userID til modellen
+        model.addAttribute("userId", user.getUserID());
+        model.addAttribute("wishList_userID", wishes.getUserId());
+
+        // Debugging - udskriv værdier
+        System.out.println("User ID: " + user.getUserID());
+        System.out.println("WishList User ID: " + wishes.getUserId());
 
         return "wishlist";
         }
