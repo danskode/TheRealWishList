@@ -114,7 +114,7 @@ public class WishListController {
         }
     }
 
-    // nico
+    // endpoint til at se en specifik ønskeliste tilhørende en anden bruger ...
     @GetMapping("otherswishlist/{wishListID}")
     public String showOthersWishListByWishLIstIDAndUserID(Model model, @PathVariable int wishListID, HttpSession session) {
 
@@ -142,7 +142,7 @@ public class WishListController {
         return "otherswishlist";
     }
 
-    // nico
+    // endpoint til at reservere et ønske på en anden brugers ønskeliste ...
     @PostMapping("/reserveWish")
     public String reserveWish(@RequestParam("wish_id") int wishId, @RequestParam("user_id") int userId) {
         // Hent ønsket og brugeren
@@ -154,7 +154,6 @@ public class WishListController {
         }
 
         // Omdirigér tilbage til ønskelisten
-        // int wishListId = wish.getWishListID();
         return "redirect:/otherswishlist/" + wlID;
     }
 

@@ -152,30 +152,14 @@ public class WishListRepository {
         jdbcTemplate.update(sql, wishListName, wishListId);
     }
 
-//    // (HALV) Metode til at hente alle ønsker som er reserveret af en specifik bruger (userID) ...
-//    public List<WishList> getAllSharedWishListsFromUserID(int userID){
-//        //sql til at få adgang til reservationer, ønsker og bruger ...
-//        String sql = "SELECT * FROM wish_item_reservation wir JOIN wish w ON wir.wish_id=w.id JOIN `user` u ON u.id=wir.user_id JOIN wish_list wl ON wl.id=w.wish_list_id WHERE wir.user_id=?;";
-//
-//        // Definerer en RowMapper for at mappe resultaterne til WishList objekter
-//        RowMapper<WishList> rowMapper = (resultSet, rowNum) -> new WishList(
-//                resultSet.getInt("id"),
-//                resultSet.getInt("user_id"),
-//                resultSet.getString("list_name")
-//        );
-//
-//        // Brug JdbcTemplate til at udføre forespørgslen og returnere listen over wishlists
-//        return jdbcTemplate.query(sql, rowMapper, userID);
-//    }
-
-    // nico
+    // metode til at hente navnet på en anden bruger ud fra et ønskelisteid ...
     public String getWishListOwnersName(int wishListID) {
         int userID = getWishListById(wishListID).getUserId();
         String sql = "SELECT user_name FROM `user` WHERE user_id = ?";
         return jdbcTemplate.queryForObject(sql, new Object[]{userID}, String.class);
     }
 
-    // nico
+    // Metode til at hente alle andres ønskelister end ens egne ...
     public List<WishList> getAllOtherWishLists(int userID) {
         String sql="SELECT * FROM wish_list WHERE user_id != ?";
 
@@ -192,6 +176,7 @@ public class WishListRepository {
 
     }
 
+    // Metode til at hente en ønskelistes id, hvis man kun har et ønskes id ...
     public int getWishListIdFromWishId(int wishId) {
         String sql="SELECT wish_list_id FROM wish WHERE id = ?";
         return jdbcTemplate.queryForObject(sql, new Object[]{wishId}, Integer.class);
