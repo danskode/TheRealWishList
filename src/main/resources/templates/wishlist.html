@@ -14,8 +14,7 @@
         <th>Ønske</th>
         <th>Link</th>
         <th>Pris</th>
-        <th>Reserveret</th>
-        <th></th>
+        <th th:if="${userId != wishList_userID}">Reserveret</th>
         <th></th>
     </tr>
     <!-- Tjekker om wishList er sat -->
@@ -23,12 +22,13 @@
         <td th:text="${wish.getWishName()}"></td>
         <td><a th:href="${wish.getUrl()}" th:text="${wish.getUrl}">Link</a></td>
         <td th:text="${wish.getPrice()}"></td>
-        <!-- <td th:text="${wish.isReserved() ? 'Ja' : 'Nej'}"></td> -->
-        <td>
+        <td th:if="${userId != wishList_userID}" th:text="${wish.isReserved() ? 'Ja' : 'Nej'}"></td>
+        <td th:if="${userId != wishList_userID}">
             <span th:if="${wish.reserved}" th:text="'Ja'"></span>
             <button th:if="${!wish.reserved}" type="button">Reservér</button>
         </td>
-        <td><a th:href="@{/editwish/{id}(id=${wish.getWishID()})}"><button type="button">Redigér</button></a></td>
+        <td th:if="${userId != wishList_userID}">
+            <a th:href="@{/editwish/{id}(id=${wish.getWishID()})}"><button type="button">Redigér</button></a></td>
         <td>
             <form th:action="@{/deletewish/{wishID}(wishID=${wish.wishID})}" method="post">
                 <button type="submit" class="delete-button">Slet</button>
