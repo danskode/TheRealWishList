@@ -167,4 +167,33 @@ public class WishListRepository {
 //        // Brug JdbcTemplate til at udføre forespørgslen og returnere listen over wishlists
 //        return jdbcTemplate.query(sql, rowMapper, userID);
 //    }
+
+    // nico
+    public String getWishListOwnersName(int wishListID) {
+        int userID = getWishListById(wishListID).getUserId();
+        String sql = "SELECT user_name FROM `user` WHERE user_id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{userID}, String.class);
+    }
+
+    // nico
+    public List<WishList> getAllOtherWishLists(int userID) {
+        String sql="SELECT * FROM wish_list WHERE user_id != ?";
+
+        // Definerer en RowMapper for at mappe resultaterne til WishList objekter
+        RowMapper<WishList> rowMapper = (resultSet, rowNum) -> new WishList(
+                resultSet.getInt("id"),
+                resultSet.getInt("user_id"),
+                resultSet.getString("list_name")
+        );
+
+        // Brug JdbcTemplate til at udføre forespørgslen og returnere listen over wishlists
+        return jdbcTemplate.query(sql, rowMapper, userID);
+
+
+    }
+
+    public int getWishListIdFromWishId(int wishId) {
+        String sql="SELECT wish_list_id FROM wish WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{wishId}, Integer.class);
+    }
 }

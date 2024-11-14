@@ -1,6 +1,7 @@
 package org.kea.therealwishlist.service;
 
 import org.kea.therealwishlist.model.Wish;
+import org.kea.therealwishlist.repository.UserRepository;
 import org.kea.therealwishlist.repository.WishRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,12 @@ import java.util.List;
 public class WishService {
 
     private final WishRepository wishRepository;
+    private final UserRepository userRepository;
 
 
-    public WishService(WishRepository wishRepository) {
+    public WishService(WishRepository wishRepository, UserRepository userRepository) {
         this.wishRepository = wishRepository;
+        this.userRepository = userRepository;
     }
 
     public List<Wish> getWishesByUserID(int userID) {
@@ -36,4 +39,7 @@ public class WishService {
         wishRepository.deleteWish(wishID);
     }
 
+    public void createReservation(int wishId) {
+        wishRepository.createReservation(wishId);
+    }
 }

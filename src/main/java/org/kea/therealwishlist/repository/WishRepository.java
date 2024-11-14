@@ -74,6 +74,10 @@ public class WishRepository {
         jdbcTemplate.update(sql, wishID);
     }
 
+    public void createReservation(int wishId) {
+        String sql="UPDATE wish SET wish_reserved = 1 WHERE id = ?";
+        jdbcTemplate.update(sql, wishId);
+    }
 }
 
 

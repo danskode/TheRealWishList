@@ -34,6 +34,20 @@
         <a th:href="@{/createwishlist}" class="button">Opret ny ønskeliste</a>
     </div>
 
+    <h2>Andres ønskelister delt med dig</h2>
+
+    <!-- Andre brugeres ønskelister -->
+    <div class="wishlist-list">
+        <table th:if="${!#lists.isEmpty(othersWishLists)}">
+            <tbody>
+            <tr th:each="othersWishList : ${othersWishLists}">
+                <td><a th:href="@{/otherswishlist/{wishListID}(wishListID=${othersWishList.id})}" th:text="${othersWishList.wishListName}"></a></td>
+                </form></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
     <!-- Knap til at logge ud -->
     <a th:href="@{/logout}" class="button" style="background-color: #f44336;">Log ud</a>
 </div>

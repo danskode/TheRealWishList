@@ -43,4 +43,17 @@ public class WishListService {
     public WishList getWishListById(int wishListID) {
         return wishListRepository.getWishListById(wishListID);
     }
+
+    //nico
+    public String getWishListOwnersName(int wishListID) {
+        return wishListRepository.getWishListOwnersName(wishListID);
+    }
+
+    public List<WishList> getAllOtherWishLists(int userID) {
+        return wishListRepository.getAllOtherWishLists(userID);
+    }
+
+    public int getWishLisIdFromWishId(int wishId) {
+        return wishListRepository.getWishListIdFromWishId(wishId);
+    }
 }
